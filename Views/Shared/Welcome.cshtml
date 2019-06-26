@@ -1,0 +1,78 @@
+﻿<html>
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url('https://img.heypik.com/background-image/20190122/psd-vector-business-statistics-poster-heypik-70U448T.jpg?x-oss-process=image/quality,q_70/watermark,image_c2h1aXlpbl9uZXcucG5n,g_center');
+            min-height: 100%;
+            min-width: 1024px; /* Set up proportionate scaling */
+            width: 100%;
+            height: auto; /* Set up positioning */
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+
+
+        h1 {
+            left: 20%;
+            font-size: 90px;
+            color: #ffffff;
+            line-height: 200px;
+            margin: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif margin-top: -100px;
+            position: absolute;
+            top: 15%;
+            font-weight: bold;
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        function checkCommercant() {
+
+            var commercantname = sessionStorage.getItem("commercantname");
+            var commercantcompany = sessionStorage.getItem("commercantcompany");
+
+         if (commercantname == null || commercantcompany == null) {
+                window.location.href = "/Account/login";
+            }
+            else {
+                //redirect to home
+                window.location.href = "http://localhost:50963/index.html";
+            }
+
+        }
+
+        function checkClient() {
+       
+
+            var clientname = sessionStorage.getItem("name");
+
+            if (clientname == null) {
+                window.location.href = "/Account/Client_login";
+            }
+            else {
+                //redirect to home
+                window.location.href = "http://localhost:50963/client/index.html";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <!--Add on click tho-->
+    <h1>Welcome to E-Survey </h1>
+    <button id="commercant" onclick="checkCommercant()"  class="btn btn-primary" style="width:200px;height:150px;background-color:cadetblue"><b>Commercial</b></button>
+    <span style="color:#ffffff;font-size:larger;font-weight:bold;">OR</span>
+    <button id="client" onclick="checkClient()"  class="btn btn-primary" style="width:200px;height:150px;background-color:#3158b4"><b>Client</b></button>
+
+
+</body>
+
+</html>

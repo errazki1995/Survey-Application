@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28306.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsisaSurvey", "EsisaSurvey.csproj", "{4A1C1BBA-D22A-4817-BF59-A787FD12CC40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsisaJsonParser", "..\EsisaJsonParser\EsisaJsonParser.csproj", "{03C2C013-53C1-461D-896E-2714179EEDC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A1C1BBA-D22A-4817-BF59-A787FD12CC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1C1BBA-D22A-4817-BF59-A787FD12CC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1C1BBA-D22A-4817-BF59-A787FD12CC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1C1BBA-D22A-4817-BF59-A787FD12CC40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C2C013-53C1-461D-896E-2714179EEDC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C2C013-53C1-461D-896E-2714179EEDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C2C013-53C1-461D-896E-2714179EEDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C2C013-53C1-461D-896E-2714179EEDC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE9FCA40-68B1-41CE-93D2-9C77DBF4D09A}
+	EndGlobalSection
+EndGlobal

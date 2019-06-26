@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Esisa Survey Maker</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-debug.js"></script>
+    <link rel="stylesheet"
+          href="./survey.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <style>
+
+        body {
+            background-color: #116249;
+        }
+
+        .table td {
+            padding: 2px;
+            border-width: 0;
+        }
+
+        .topnav {
+            background-color: white;
+            overflow: hidden;
+        }
+
+            /* Style the links inside the navigation bar */
+            .topnav a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                border-bottom: 3px solid transparent;
+            }
+
+                .topnav a:hover {
+                    border-bottom: 3px solid white;
+                }
+
+                .topnav a.active {
+                    border-bottom: 3px solid white;
+                }
+
+        #client {
+            font-family: 'Segoe UI';
+            color: #038264;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #welcomeback {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+        }
+    </style>
+</head>
+<body onload="checkUser()">
+
+
+
+    <div class="sv_main sv_frame sv_default_css">
+        <div class="sv_custom_header"></div>
+        <div class="sv_container">
+            <div class="sv_header">
+
+
+                <div class="topnav">
+                    <a href="#" class="active"> <p span style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:#038264;">Home</p></a>
+
+                    <div id="welcomeback">
+
+                    </div>
+                    <div id="client"></div>
+                    <div id="logoutBtn"></div>
+
+                </div>
+
+
+
+
+                <div class="topnav">
+                    <a href="#" class="active"> <p span style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color:#038264;"><u>Active surveys</u></p></a>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="sv_body">
+                <div id="surveys-list" class="surveys-list">
+                    <section></section>
+                    <table class="table fa-street-view">
+                        <tbody>
+                            <!-- ko foreach: availableSurveys -->
+                            <tr>
+
+                                <td>
+                                    <div class="panel panel-primary" style="background-color:	#038264">
+                                        <div class="panel-heading" style="background-color:#52c4af"><h4 class="card-title" data-bind="text: 'survey: '+name"></h4></div>
+                                        <div class="panel-body">
+                                            <p class="card-text" style="color:white"><b>click below to vote your part <span style="color:darkorange" data-bind="text:name"></span></b></p>
+                                            <a style="background-color:#ed5565;color:white;" class="sv_button_link"
+                                               data-bind="attr: { href: '../survey.html?id=' + ko.unwrap(id) }"><b>View</b></a>
+
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="index.js"></script>
+<script>
+    function checkUser() {
+       
+        var name = sessionStorage.getItem("name");
+        if (name == null) {
+            window.location.href = "/Account/Client_login";
+        }
+        var divTag = document.getElementById("client");
+        var welcomeback = document.getElementById("welcomeback");
+        welcomeback.innerHTML = "Welcome Back";
+        var welcome = name;
+        divTag.append(welcome);
+        var logout = document.getElementById("logoutBtn");
+        logout.innerHTML = "<button type='button' id='logoutevent' class='btn btn-success'>logout</button>";
+
+        document.addEventListener('click', function (e) {
+            if (e.target && e.target.id == 'logoutevent') {
+                sessionStorage.removeItem("name");
+                sessionStorage.removeItem("login");
+                window.location.href = "/Account/Client_login";
+            }
+        });
+
+    }
+
+
+</script>

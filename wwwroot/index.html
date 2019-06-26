@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Esisa Survey Maker</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-debug.js"></script>
+    <link rel="stylesheet"
+          href="./survey.css" />
+    <link rel="stylesheet" href="./index.css" />
+
+    <style>
+
+        #logoutevent:hover {
+            color: white;
+        }
+
+        #client {
+            font-family: 'Segoe UI';
+            color: #038264;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #welcomeback {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight:bold;
+            color: white;
+        }
+
+        #containermain {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .flex-item {
+            width: 32%;
+            height: 60%;
+        }
+    </style>
+</head>
+<body onload="checkUser()">
+
+    <div class="sv_main sv_frame sv_default_css">
+        <div class="sv_custom_header"></div>
+        <div class="sv_container">
+            <div class="sv_header" style="background-color:#038264">
+                <div id="user"></div>
+                <div id="welcomeback"></div>
+                <div id="client"></div>
+                <div id="logoutBtn"></div>
+                <h1><span style="color:white">Esisa survey Maker (For commercants )</span></h1>
+            </div>
+            <!-- <div class="sv_body">-->
+            <div class="sv_body">
+                <div id="surveys-list" class="surveys-list">
+                    <section>
+                        <button data-bind="click: function() { createSurvey('NewSurvey' + Date.now(), loadSurveys); }">
+                            Add New survey
+                        </button>
+                    </section>
+                    <!--<table class="table table-striped">-->
+                    <table class="table">
+                        <tbody>
+                            <!-- ko foreach: availableSurveys -->
+                            <tr>
+                                <td>
+                                    <div class="panel panel-primary" style="background-color:	#038264">
+                                        <div class="panel-heading" style="background-color:#52c4af"><h4 class="card-title" data-bind="text: 'survey: '+name"></h4></div>
+                                        <div class="panel-body">
+                                            <p class="card-text" style="color:white"><b>Survey is Active <span style="color:darkorange" data-bind="text:name"></span></b></p>
+                                            <a class="sv_button_link" style="color:white"
+                                               data-bind="attr: { href: 'survey.html?id=' + ko.unwrap(id) }">Run</a>
+                                            <a class="sv_button_link" style="color:white"
+                                               data-bind="attr: { href: 'survey-creator.html?id=' + ko.unwrap(id) }">Edit</a>
+                                            <a class="sv_button_link" style="color:white"
+                                               data-bind="attr: { href: 'results.html?id=' + ko.unwrap(id) }">Results</a>
+                                            <span class="sv_button_link sv_button_delete" style="color:white"
+                                                  data-bind="click: function() { $parent.deleteSurvey(ko.unwrap(id), $parent.loadSurveys); }">Delete</span>
+
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+
+
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+<script>
+    function checkUser() {
+       
+        var commercantname= sessionStorage.getItem("commercantname");
+        var commercantcompany = sessionStorage.getItem("commercantcompany");
+       
+       
+        if (commercantname == null || commercantcompany == null) {
+            window.location.href = "/Account/login";
+        }
+        var divTag = document.getElementById("client");
+        var welcomeback = document.getElementById("welcomeback");
+       
+        var welcome = commercantname;
+        divTag.innerHTML = welcome;
+        welcomeback.innerHTML = "Welcome Back " + welcome;
+        //alert(divTag.innerHTML);
+        var logout = document.getElementById("logoutBtn");
+        logout.innerHTML = "<button type='button' style='background-color:#5cb85c;' id='logoutevent' class='btn btn-success'>logout</button>";
+
+        document.addEventListener('click', function (e) {
+            if (e.target && e.target.id == 'logoutevent') {
+                sessionStorage.removeItem('commercantname');
+                sessionStorage.removeItem('commercantcompany');
+                window.location.href = "/Account/login";
+            }
+        });
+
+    }
+    </script>
+
+</html >
